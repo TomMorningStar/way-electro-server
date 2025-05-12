@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const homePage = require('./home-page');
-const brandsPlugsAndSockets = require('./brands-plugs-and-sockets');
-const brandItemsPlugsAndSockets = require('./plugs-and-sockets-items')
+const catalog = require('./catalog');
+const circuit_breakers_brands = require('./circuit_breakers/circuit_breakers_brands');
+const circuit_breakers_types = require('./circuit_breakers/circuit_breakers_types');
+const circuit_breakers_list = require('./circuit_breakers/circuit_breakers_list')
 
-router.use(homePage)
-router.use(brandsPlugsAndSockets)
-router.use(brandItemsPlugsAndSockets)
+router.use(catalog)
+router.use(circuit_breakers_brands)
+router.use(circuit_breakers_types)
+router.use(circuit_breakers_list)
 
 module.exports = router;
