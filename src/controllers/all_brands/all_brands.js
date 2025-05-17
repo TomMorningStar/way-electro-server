@@ -1,7 +1,6 @@
 const pool = require('../../db');
 
 exports.get_all_brands = async (req, res) => {
-
   try {
     const result = await pool.query(
       `SELECT *
