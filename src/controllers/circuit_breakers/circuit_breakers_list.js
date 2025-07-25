@@ -1,7 +1,7 @@
 const pool = require('../../db');
 
 exports.get_circuit_breakers_list = async (req, res) => {
-	const { brand_id, type_id } = req.params;
+	const { id } = req.params;
 	// console.log('Received params:', req.params);
 
 	try {
@@ -14,7 +14,11 @@ exports.get_circuit_breakers_list = async (req, res) => {
 		// );
 		const result = await pool.query(
 			`SELECT *
-       FROM circuit_breakers_list`
+				FROM 
+						circuit_breakers_list
+				WHERE 
+    circuit_breakers_list.catalog_list_id = $1`,
+			[id]
 		);
 
 		res.json(result.rows);
